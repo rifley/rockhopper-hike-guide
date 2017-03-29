@@ -18,6 +18,10 @@ public class Region {
     return this.id;
   }
 
+  public String getState() {
+    return state;
+  }
+
 @Override
 public boolean equals(Object otherRegion) {
   if(!(otherRegion instanceof Region)) {

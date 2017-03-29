@@ -1,36 +1,20 @@
 <!--index.vtl-->
 <h2>Rockhopper</h3>
-
-<p>#foreach($region in $regions)
-    $region.getName()
+<!-- 
+<ul>
+  #foreach($region in $regions)
+    <li><a href="/select">$region.getName()</a></li>
   #end
-</p>
+</ul> -->
 
-<!-- <nav class="navbar navbar-inverse" id="nav">
-  <ul>
-    <li><a href="/">Home</li>
 
-    <select id="regionSelect" name="regionSelect" type="text">
-    #foreach($region in $regions)
-      <option value="$region.getId()"><a href="/region/$region.getId()">$region.getName()</a></option>
-    #end
-    </select>
-
-    <li><a href="$region.">Find Hike</a></li>
-    <li><a href="/admin">Admin</a></li>
-  </ul>
-</nav> -->
-<!--index.vtl-->
 <nav class="navbar navbar-default">
   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     <ul class="nav navbar-nav">
       <li><a href="/">Home</a></li>
       <li><a href="#">Admin</a></li>
-      <select>
-        #foreach($region in $regions)
-          <option>$region.getName()</option>
-        #end
-      </select>
+      <li><a href="/select">Find Hike</a></li>
+
     </ul>
   </div>
 </nav>
