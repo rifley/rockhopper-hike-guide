@@ -12,7 +12,7 @@ public class RegionTest {
   @After
   public void tearDown() {
     try (Connection con = DB.sql2o.open()) {
-      String sql = "DELETE FROM location *;";
+      String sql = "DELETE FROM region *;";
       con.createQuery(sql).executeUpdate();
     }
   }
@@ -41,10 +41,10 @@ public class RegionTest {
   public void all_returnsAllFromDatabase(){
     Region region1 = new Region ("trail1", "Oregon");
     region1.save();
-    Region region2 = new Region ("trail2", "Washington")
+    Region region2 = new Region ("trail2", "Washington");
     region2.save();
-    assertTrue(Specialty.all().get(0).equals(region1));
-    assertTrue(Specialty.all().get(1).equals(region2));
+    assertTrue(Region.all().get(0).equals(region1));
+    assertTrue(Region.all().get(1).equals(region2));
     }
 
 }

@@ -2,17 +2,17 @@ import org.sql2o.*;
 import java.util.List;
 
 public class Region {
-  private String regionName;
+  private String region;
   private String state;
   private int id;
 
   public Region(String name, String state) {
-    this.regionName = name;
+    this.region = name;
     this.state = state;
   }
 
   public String getName() {
-    return regionName;
+    return region;
   }
   public int getId(){
     return this.id;
@@ -31,10 +31,10 @@ public boolean equals(Object otherRegion) {
 
   public void save() {
     try(Connection con = DB.sql2o.open()) {
-      String sql = "INSERT INTO location (state, region) VALUES (:state, :region)";
+      String sql = "INSERT INTO region (state, region) VALUES (:state, :region)";
       this.id = (int) con.createQuery(sql, true)
         .addParameter("state", this.state)
-        .addParameter("region", this.regionName)
+        .addParameter("region", this.region)
         .executeUpdate()
         .getKey();
     }
@@ -42,16 +42,16 @@ public boolean equals(Object otherRegion) {
 
   public static Region find(int id) {
     try(Connection con = DB.sql2o.open()) {
-      String sql = "SELECT * FROM location WHERE id = :id";
+      String sql = "SELECT * FROM region WHERE id = :id";
       return con.createQuery(sql)
-        .addParameter("id", this.id)
+        .addParameter("id", id)
         .executeAndFetchFirst(Region.class);
     }
   }
 
   public static List<Region> all(){
     try(Connection con = DB.sql2o.open()){
-      String sql = "SELECT * FROM loction";
+      String sql = "SELECT * FROM region";
       return con.createQuery(sql).executeAndFetch(Region.class);
   }
 }// end region
