@@ -1,9 +1,27 @@
 
+<form class="" action="/select" method="post">
+
 
 
 <select>
   #foreach($region in $regions)
-    <option>$region.getName()</option>
+    <option>$region.getName() - $region.getState()</option>
   #end
 </select>
+
+
+
+<select>
+  <option>Easy</option>
+  <option>Medium</option>
+  <option>Hard</option>
+</select>
+
+
+<select>
+  <option> < 1 mile </option>
+  <option> 1 mile < 5 miles </option>
+  <option> > 5 miles </option>
+<select>
+
 </form>
