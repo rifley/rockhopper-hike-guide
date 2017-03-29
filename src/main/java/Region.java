@@ -1,4 +1,5 @@
 import org.sql2o.*;
+import java.util.List;
 
 public class Region {
   private String regionName;
@@ -12,6 +13,9 @@ public class Region {
 
   public String getName() {
     return regionName;
+  }
+  public int getId(){
+    return this.id;
   }
 
 @Override
@@ -30,7 +34,7 @@ public boolean equals(Object otherRegion) {
       String sql = "INSERT INTO location (state, region) VALUES (:state, :region)";
       this.id = (int) con.createQuery(sql, true)
         .addParameter("state", this.state)
-        .addParameter("region", this.region)
+        .addParameter("region", this.regionName)
         .executeUpdate()
         .getKey();
     }
@@ -50,7 +54,5 @@ public boolean equals(Object otherRegion) {
       String sql = "SELECT * FROM loction";
       return con.createQuery(sql).executeAndFetch(Region.class);
   }
-
-
-
-}
+}// end region
+} // end Region class

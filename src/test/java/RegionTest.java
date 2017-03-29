@@ -37,6 +37,14 @@ public class RegionTest {
     assertTrue(Region.all().get(0).equals(newRegion));
   }
 
-
+  @Test
+  public void all_returnsAllFromDatabase(){
+    Region region1 = new Region ("trail1", "Oregon");
+    region1.save();
+    Region region2 = new Region ("trail2", "Washington")
+    region2.save();
+    assertTrue(Specialty.all().get(0).equals(region1));
+    assertTrue(Specialty.all().get(1).equals(region2));
+    }
 
 }
