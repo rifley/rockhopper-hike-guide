@@ -12,9 +12,31 @@ public class RegionTest {
   @After
   public void tearDown() {
     try (Connection con = DB.sql2o.open()) {
-      String sql = "DELETE FROM name_of_your_table *;";
+      String sql = "DELETE FROM location *;";
       con.createQuery(sql).executeUpdate();
     }
   }
+
+  @Test
+  public void region_instantiatesCorrectly() {
+    Region region = new Region("Coast", "Oregon");
+    assertTrue(region instanceof Region);
+
+  }
+
+  @Test
+  public void getName_returnsRegionName_String() {
+    Region region = new Region("Coast", "Oregon");
+    assertEquals("Coast", region.getName());
+  }
+
+  @Test
+  public void savesEntriesToDatabase(){
+    Region newRegion = new Region("Coast", "Oregon");
+    newRegion.save();
+    assertTrue(Region.all().get(0).equals(newRegion));
+  }
+
+
 
 }
