@@ -45,4 +45,13 @@ public class State {
     }
   }
 
+  public List<Region> getRegions() {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "SELECT * FROM region WHERE state = :state";
+      return con.createQuery(sql)
+        .addParameter("state", this.name)
+        .executeAndFetch(Region.class);
+    }
+  }
+
 }

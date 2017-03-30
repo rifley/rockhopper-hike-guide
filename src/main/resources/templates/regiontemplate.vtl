@@ -1,5 +1,0 @@
-<ul>
-#foreach($region in $stateRegions)
-  <li><a href="/states/$region.getStateId()/regions/$region.getId()"> $region.getName(), <span> $state.find($region.getStateId()).getName()</span></a></li>
-#end
-</ul>

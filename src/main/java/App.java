@@ -16,27 +16,34 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
-    get("/select", (request, response) -> {
-      Map<String, Object> model = new HashMap<String, Object>();
-      model.put("regions", Region.all());
-      model.put("template", "templates/select.vtl");
-      return new ModelAndView(model, layout);
-    }, new VelocityTemplateEngine());
+    // get("/select", (request, response) -> {
+    //   Map<String, Object> model = new HashMap<String, Object>();
+    //   model.put("regions", Region.all());
+    //   model.put("template", "templates/select.vtl");
+    //   return new ModelAndView(model, layout);
+    // }, new VelocityTemplateEngine());
 
     // post("/select", (request, response) -> {
     //   Map<String, Object> model = new HashMap<String, Object>();
     //   //redirect?
     // })
-  //}
 
-  get("/states/:id/regions", (request, response) -> {
+    get("/states", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
-      Region region = Region.find(Integer.parseInt(request.params(":id")));
-      model.put("region", region);
-      model.put("stateRegions", states.getRegions());
-      model.put("template", "templates/regions.vtl");
+      String url = String.format("/states/%d/regions", Integer.parseInt(request.queryParams("stateId")));
+      response.redirect(url);
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
+
+
+    get("/states/:id/regions", (request, response) -> {
+        Map<String, Object> model = new HashMap<String, Object>();
+        State state = State.find(Integer.parseInt(request.params(":id")));
+        model.put("state", state);
+        model.put("stateRegions", state.getRegions());
+        model.put("template", "templates/regionstemplate.vtl");
+        return new ModelAndView(model, layout);
+      }, new VelocityTemplateEngine());
 
   } // END MAIN
 } // END APP
