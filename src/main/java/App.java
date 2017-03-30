@@ -27,7 +27,7 @@ public class App {
     //   Map<String, Object> model = new HashMap<String, Object>();
     //   //redirect?
     // })
-  }
+  //}
 
   get("/states/:id/regions", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
