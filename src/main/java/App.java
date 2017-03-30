@@ -28,12 +28,22 @@ public class App {
     //   //redirect?
     // })
 
-    get("/states/:id", (request, response) -> {
+    get("/states", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
-      model.put("state", State.find(Integer.parseInt(request.params(":id"))));
-      model.put("template", "templates/state.vtl");
+      String url = String.format("/states/%d/regions", Integer.parseInt(request.queryParams("stateId")));
+      response.redirect(url);
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
-  }
-}
+
+    get("/states/:id/regions", (request, response) -> {
+        Map<String, Object> model = new HashMap<String, Object>();
+        State state = State.find(Integer.parseInt(request.params(":id")));
+        model.put("state", state);
+        model.put("stateRegions", state.getRegions());
+        model.put("template", "templates/regionstemplate.vtl");
+        return new ModelAndView(model, layout);
+      }, new VelocityTemplateEngine());
+
+  } // END MAIN
+} // END APP
