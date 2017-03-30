@@ -1,4 +1,5 @@
 import org.sql2o.*;
+import java.awt.TextField;
 import java.util.List;
 
 public class Hike {
@@ -11,7 +12,7 @@ public class Hike {
   private int elevation;
   private int id;
 
-  public Hike(String name, String state, int difficulty, int distance, boolean dogs, boolean waterfalls, int elevation) {
+  public Hike(String name, String region, int difficulty, int distance, boolean dogs, boolean waterfalls, int elevation) {
     this.hikeName = name;
     this.region = region;
     this.difficulty = difficulty;
@@ -26,6 +27,24 @@ public class Hike {
   }
   public int getId(){
     return this.id;
+  }
+  public int getDifficulty(){
+    return difficulty;
+  }
+
+  public int getDistance(){
+    return distance;
+  }
+  public int getElevation(){
+    return elevation;
+  }
+
+  public boolean getDogs(){
+    return dogs;
+  }
+
+  public boolean getWaterfalls(){
+    return waterfalls;
   }
 
 @Override

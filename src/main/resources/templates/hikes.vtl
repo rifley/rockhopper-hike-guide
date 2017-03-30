@@ -14,20 +14,20 @@
     <input  id="hikes" name="hikeDifficulty" type="text" class="form-control" placeholder="Rate from 1 to 5" required>
 
     <label>Total Distance Roundtrip</label>
-    <input  id="hikes" name="hikeDistance" type="text" class="form-control" placeholder="Total miles" required>
+    <input  id="hikes" name="hikeDistance" type="text" class="form-control" placeholder="Enter total miles" required>
 
-    <span>
-    <input  id="hikes" name="hikeDogs" type="checkbox" checked="true" >
-    <label>Is dog friendly</label></span>
+    <label>Elevation</label>
+    <input  id="hikes" name="hikeElevation" type="text" class="form-control" placeholder="Enter total feet gained" required>
+
+    <input  id="hikes" name="hikeDogs" type="checkbox" value="true">
+    <h5>Is dog friendly</h5>
 
     <p>
-    <input  id="hikes" name="hikeWaterfalls" type="checkbox" checked="true" >
-    <label for="hikeWaterfalls">Has waterfalls on trail</label></p>
-
-    <label></label>
-    <input  id="hikes" name="hikeElevation" type="text" class="form-control" placeholder="How many feet elevation gain" required>
+    <input  id="hikes" name="hikeWaterfalls" type="checkbox" value"true">
+    <h5 for="hikeWaterfalls">Has waterfalls on trail</h5></p>
 
     <input id="stateId" name="stateId" type="hidden" value="$state.getId()">
+
     <input id="regionId" name="regionId" type="hidden" value="$region.getId()">
 
     <button type="submit" class="btn btn-success">Submit</button>

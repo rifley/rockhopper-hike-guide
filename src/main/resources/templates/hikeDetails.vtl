@@ -1,0 +1,55 @@
+<!-- hike details.vlt -->
+
+<div class="row">
+  <div class="col-md-4">
+    <div class="details">
+      <h3>$hike.getName()</h3>
+      <h4>Details</h4>
+        <ul>
+          <li>Distance: $hike.getDistance()</li>
+          <li>Difficulty: $hike.getDifficulty() out of 5</li>
+          <li>Hike allows dogs: $hike.getDogs()</li>
+          <li>Hike has waterfalls: $hike.getWaterfalls()</li>
+          <li>Elevation: $hike.getElevation()</li>
+        </ul>
+      </div><!-- end details  -->
+    <br>
+    <br>
+
+    <div class="comments">
+      #foreach($comment in $comments)
+        <div class="well">
+          <p>comment.getStatement</p>
+        </div> <!-- close well -->
+      #end
+    <form action="/comment" method="post">
+      <label for="comment">Add Comment</label>
+      <input type="text" name="comment" placeholder="Enter a comment"></input>
+      <input type="integer" name="rating" placeholder="rate from 1 - 5"></input>
+      <button class="btn btn-success"  type="submit">Submit</button>
+
+      <input id="comment" name="hikeId" type="hidden" value="$hike.getId()">
+      <input id="comment" name="stateId" type="hidden" value="$state.getId()">
+      <input id="comment" name="regionId" type="hidden" value="$region.getId()">
+
+
+
+    </form>
+  </div> <!-- end comment -->
+</div> <!-- end column -->
+
+
+<div class="col-md-8">
+    <div class="image">
+
+      <img src="http://palmettoconservation.org/wp-content/uploads/2015/01/IMG_0645-e1445610757309.jpg">
+
+    </div> <!-- closes image div -->
+</div> <!-- end col-me-8  -->
+</div>
+
+
+
+
+
+<!-- hike details.vlt -->
