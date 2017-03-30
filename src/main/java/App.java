@@ -56,5 +56,10 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
+    post("/add-hike", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+
+    })
+
   } // END MAIN
 } // END APP
