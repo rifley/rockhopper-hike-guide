@@ -1,4 +1,6 @@
 <!-- hikes.vtl -->
+
+
 #foreach ($hike in $hikes)
  <li>
 <a href="/states/$state_id/regions/$region_id/hikes/hike.getId()"> $hike.getId()"> $hike.getName(), <span>$region.find(hike.getStateID).getName()</span></a>
@@ -6,5 +8,22 @@
  </li>
 #end
 
+<div class="hike">
+  <h3>Add New Hike</h3>
+  <form action="/hikes" method="post">
+    <input  id="hikes" name="hikeName" type="text" class="form-control" placeholder="Add name of hike " required>
+
+    <input  id="hikes" name="hikeDifficulty" type="text" class="form-control" placeholder="Rate from 1 to 5" required>
+
+    <input  id="hikes" name="hikeDistance" type="text" class="form-control" placeholder="Total miles roundtrip" required>
+
+    <input  id="hikes" name="hikeDogs" type="text" class="form-control" placeholder="Is trail dog friendly?" required>
+
+    <input  id="hikes" name="hikeWaterfalls" type="text" class="form-control" placeholder="Are waterfalls on trail?" required>
+    <input  id="hikes" name="hikeDifficulty" type="text" class="form-control" placeholder="How many feet elevation gain" required>
+
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+</div>
 
 <!-- hikes.vtl -->
