@@ -11,7 +11,7 @@ public class App {
 
     get("/", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
-      model.put("regions", Region.all());
+      model.put("states", State.all());
       model.put("template", "templates/index.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
@@ -23,9 +23,9 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
-    post("/select", (request, response) -> {
-      Map<String, Object> model = new HashMap<String, Object>();
-      //redirect?
-    })
+    // post("/select", (request, response) -> {
+    //   Map<String, Object> model = new HashMap<String, Object>();
+    //   //redirect?
+    // })
   }
 }

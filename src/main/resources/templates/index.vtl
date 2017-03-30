@@ -12,4 +12,15 @@
     </ul>
   </div>
 </nav>
+
+
+<form action="/regions">
+  <label for="stateId">Select a State</label>
+  <select id="stateId" name="stateId" type="text">
+    #foreach($state in $states)
+      <option value="$state.getId()">$state.getName()</option>
+    #end
+  </select>
+  <button type="submit" class="btn btn-primary">submit</button>
+</form>
 <!---->
