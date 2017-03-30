@@ -16,16 +16,24 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
-    get("/select", (request, response) -> {
-      Map<String, Object> model = new HashMap<String, Object>();
-      model.put("regions", Region.all());
-      model.put("template", "templates/select.vtl");
-      return new ModelAndView(model, layout);
-    }, new VelocityTemplateEngine());
+    // get("/select", (request, response) -> {
+    //   Map<String, Object> model = new HashMap<String, Object>();
+    //   model.put("regions", Region.all());
+    //   model.put("template", "templates/select.vtl");
+    //   return new ModelAndView(model, layout);
+    // }, new VelocityTemplateEngine());
 
     // post("/select", (request, response) -> {
     //   Map<String, Object> model = new HashMap<String, Object>();
     //   //redirect?
     // })
+
+    get("/states/:id", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      model.put("state", State.find(Integer.parseInt(request.params(":id"))));
+      model.put("template", "templates/state.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
   }
 }
