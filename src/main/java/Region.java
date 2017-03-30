@@ -57,6 +57,18 @@ public boolean equals(Object otherRegion) {
     try(Connection con = DB.sql2o.open()){
       String sql = "SELECT * FROM region";
       return con.createQuery(sql).executeAndFetch(Region.class);
+    }
   }
-}// end region
+
+  public List<Hike> getHikes() {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "SELECT * FROM hikes WHERE region = :region";
+      return con.createQuery(sql)
+        .addParameter("region", this.region)
+        .executeAndFetch(Hike.class);
+    }
+  }
+
+
+// end region
 } // end Region class
