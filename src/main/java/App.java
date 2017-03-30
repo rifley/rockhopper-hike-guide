@@ -28,4 +28,15 @@ public class App {
     //   //redirect?
     // })
   }
-}
+
+  get("/states/:id/regions", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      Region region = Region.find(Integer.parseInt(request.params(":id")));
+      model.put("region", region);
+      model.put("stateRegions", states.getRegions());
+      model.put("template", "templates/regions.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+  } // END MAIN
+} // END APP
