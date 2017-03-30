@@ -59,7 +59,28 @@ public class App {
     post("/add-hike", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
 
-    })
+      int state = Integer.parseInt(request.queryParams("stateId"));
+      int region = Integer.parseInt(request.queryParams("regionId"));
+      Region newRegion = Region.find(region);
+      String regionName = newRegion.getName();
+
+      String hikeName = request.queryParams("hikeName");
+      int hikeDifficulty = Integer.parseInt(request.queryParams("hikeDifficulty"));
+      int hikeDistance = Integer.parseInt(request.queryParams("hikeDistance"));
+      // String hikeDogsS = String.valueOf(request.queryParams("hikeDogs"));
+      Boolean hikeDogs = true;
+      Boolean hikeWaterfalls = true;
+      // boolean hikeDogs = Boolean.valueOf(request.queryParams("hikeDogs"));
+      // boolean hikeWaterfalls = Boolean.valueOf(request.queryParams("hikeWaterfalls"));
+      int hikeElevation = Integer.parseInt(request.queryParams("hikeElevation"));
+      Hike hike = new Hike(hikeName, regionName, hikeDifficulty, hikeDistance, hikeDogs, hikeWaterfalls, hikeElevation);
+      hike.save();
+
+      String url = String.format("/states/%d/regions/%d/hikes", state, region);
+
+      response.redirect(url);
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
 
   } // END MAIN
 } // END APP

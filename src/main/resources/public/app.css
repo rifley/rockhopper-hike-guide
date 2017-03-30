@@ -1,7 +1,17 @@
+
+
 .container{
   min-width: 80%;
 }
 
 .body{
   background-color: white;
+}
+
+p{
+  margin-top: 20px;
+
+}
+button{
+  margin-top: 25px;
 }
